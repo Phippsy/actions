@@ -2,6 +2,10 @@
 
 import os
 import requests
+import datetime
+
+current_date_time = datetime.datetime.now()
+current_date_time = current_date_time.strftime("%Y-%m-%d %H:%M:%S")
 
 def send_pushover(title, message):
     user = os.environ.get('PUSHOVER_USER')
@@ -19,4 +23,4 @@ def send_pushover(title, message):
     requests.post(url, data=data)
 
 if __name__ == '__main__':
-    send_pushover('From your repo', 'Something happened!')
+    send_pushover('From your repo', f'A wild push appeared at {current_date_time}!')
